@@ -27,4 +27,4 @@ if (! class_exists('CMB2_NavMenus')) {
         }
     }
 }
-add_action('init', [CMB2_NavMenus::class, 'init']);
+add_action('admin_init', [CMB2_NavMenus::class, 'init'], 1 );
