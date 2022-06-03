@@ -121,8 +121,8 @@ class Integration
 
 		// Register assets
 		add_action('admin_enqueue_scripts', function() {
-			wp_register_style('cmb2_nav_menus', self::plugins_url('cmb2-nav-menus', '/assets/cmb2-nav-menus.css', __FILE__, 1), false, '1.0.0');
-			wp_register_script('cmb2_nav_menus', self::plugins_url('cmb2-nav-menus', '/assets/cmb2-nav-menus.js', __FILE__, 1), ['jquery'], '1.0.0');
+			wp_register_style('cmb2_nav_menus', self::plugins_url( '/assets/cmb2-nav-menus.css', __FILE__, 1), false, '1.0.0');
+			wp_register_script('cmb2_nav_menus', self::plugins_url( '/assets/cmb2-nav-menus.js', __FILE__, 1), ['jquery'], '1.0.0');
 
             wp_enqueue_style('cmb2_nav_menus');
 			wp_enqueue_script('cmb2_nav_menus');
@@ -268,40 +268,18 @@ class Integration
         return array_keys($arr) !== range(0, count($arr) - 1);
     }
 
-	static function plugins_url($name, $file, $__FILE__, $depth = 0)
+	static function plugins_url( $file, $__FILE__, $depth = 0)
 	{
 		// Traverse up to root
 		$dir = dirname($__FILE__);
-
 		for ($i = 0; $i < $depth; $i++) {
 			$dir = dirname($dir);
 		}
 
-		$root = $dir;
-		$plugins = dirname($root);
-
-		// Compare plugin directory with our found root
-		if ($plugins !== WP_PLUGIN_DIR || $plugins !== WPMU_PLUGIN_DIR) {
-			// Must be a symlink, guess location based on default directory name
-			$resource = $name.'/'.$file;
-			$url = false;
-
-			if (file_exists(WPMU_PLUGIN_DIR.'/'.$resource)) {
-				$url = WPMU_PLUGIN_URL.'/'.$resource;
-			}
-			elseif (file_exists(WP_PLUGIN_DIR.'/'.$resource)) {
-				$url = WP_PLUGIN_URL.'/'.$resource;
-			}
-
-			if ($url) {
-				if (is_ssl() && substr($url, 0, 7) !== 'https://') {
-					$url = str_replace('http://', 'https://', $url);
-				}
-
-				return $url;
-			}
-		}
-
-		return plugins_url($file, $root);
+		return str_replace(
+			WP_CONTENT_DIR,
+			WP_CONTENT_URL,
+			$dir
+		) . $file;
 	}
 }
