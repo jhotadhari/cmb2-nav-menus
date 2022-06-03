@@ -1,6 +1,5 @@
 <?php namespace NSRosenqvist\CMB2\NavMenus;
 
-use NSRosenqvist\CMB2\NavMenus\WalkerNavMenuEdit;
 use CMB2_hookup;
 use CMB2;
 
@@ -46,7 +45,6 @@ class Integration
 				add_action('wp_nav_menu_item_custom_fields', [self::class, 'form'], 10, 4);
 				add_action('wp_update_nav_menu_item', [self::class, 'save'], 10, 3);
 				add_filter('manage_nav-menus_columns', [self::class, 'columns'], 99);
-				add_filter('wp_edit_nav_menu_walker', [self::class, 'walker'], 99);
 				add_filter('cmb2_admin_init', [self::class, 'adminInit']);
 
 				// This isn't really used, it's just there to avoid the metabox showing on
@@ -235,11 +233,6 @@ class Integration
 	static function columns($columns)
 	{
 		return array_merge($columns, self::$columns);
-	}
-
-	static function walker()
-	{
-		return WalkerNavMenuEdit::class;
 	}
 
 	static function show_on($display, $meta_box)
