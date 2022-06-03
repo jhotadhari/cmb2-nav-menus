@@ -1,11 +1,8 @@
 <?php defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 /*
-Plugin Name: CMB2 Nav Menus
-Description: Allow CMB2 forms to be used in the nav menu
-Version: 1.0.0
-Author: Niklas Rosenqvist
-Author URI: https://www.nsrosenqvist.com/
+Original-Author: Niklas Rosenqvist
+Original-Author URI: https://www.jhotadhari.com/
 */
 
 if (! class_exists('CMB2_NavMenus')) {
@@ -23,7 +20,7 @@ if (! class_exists('CMB2_NavMenus')) {
             require_once __DIR__.'/src/helpers.php';
 
             // Initialize plugin
-            \NSRosenqvist\CMB2\NavMenus\Integration::init();
+            \Jhotadhari\CMB2\NavMenus\Integration::init();
         }
     }
 }

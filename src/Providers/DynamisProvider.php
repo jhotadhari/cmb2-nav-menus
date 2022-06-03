@@ -1,6 +1,6 @@
-<?php namespace NSRosenqvist\CMB2\NavMenus\Providers;
+<?php namespace Jhotadhari\CMB2\NavMenus\Providers;
 
-use NSRosenqvist\CMB2\NavMenus\Integration;
+use Jhotadhari\CMB2\NavMenus\Integration;
 
 class DynamisProvider extends \Dynamis\ServiceProvider
 {

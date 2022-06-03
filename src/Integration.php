@@ -1,4 +1,4 @@
-<?php namespace NSRosenqvist\CMB2\NavMenus;
+<?php namespace Jhotadhari\CMB2\NavMenus;
 
 use CMB2_hookup;
 use CMB2;
