@@ -16,7 +16,6 @@ if (! class_exists('CMB2_NavMenus')) {
 
             // Include files
             require_once __DIR__.'/src/Integration.php';
-            require_once __DIR__.'/src/WalkerNavMenuEdit.php';
             require_once __DIR__.'/src/helpers.php';
 
             // Initialize plugin
