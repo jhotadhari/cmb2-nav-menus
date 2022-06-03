@@ -2,6 +2,7 @@
     "name": "nsrosenqvist/cmb2-nav-menus",
     "type": "wordpress-plugin",
     "license": "MIT",
+    "version": "1.1.0",
     "description": "",
     "homepage": "https://github.com/nsrosenqvist/cmb2-nav-menus",
     "autoload": {
